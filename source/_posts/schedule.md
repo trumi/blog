@@ -2,10 +2,7 @@
 title: 仿课程格子的课表界面
 date: 2015-12-09 20:30:31
 tags: [Android , View]
-<<<<<<< HEAD
 thumbnail: /images/schedule/gezi.png
-=======
->>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 ---
 
 在大学里，最常使用的课表软件大概要算课程格子和超级课程表了。课表界面简洁明了，讨人喜欢。它们是如何实现这种效果的呢？
@@ -20,11 +17,7 @@ thumbnail: /images/schedule/gezi.png
 ![gezi](/images/schedule/gezi.png)
 
 
-<<<<<<< HEAD
 * 超级课程表
-=======
-* 超级课程表 
->>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 
 ![super](/images/schedule/super.png)
 
@@ -304,8 +297,4 @@ thumbnail: /images/schedule/gezi.png
 ![shuibiao](/images/schedule/shuibiao.png)
 
 ### 总结
-<<<<<<< HEAD
 看上去貌似很难做的样子，其实只要思路对了，做起来就不难了。本人美术功底有限，界面还有很多提升的空间，继续加油，哈哈
-=======
-看上去貌似很难做的样子，其实只要思路对了，做起来就不难了。本人美术功底有限，界面还有很多提升的空间，继续加油，哈哈
->>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c

@@ -7,11 +7,7 @@ title: 刘卓旻的博客
 subtitle: better code better life
 description:
 author: 刘卓旻
-<<<<<<< HEAD
 language: zh-CN
-=======
-language:
->>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 timezone:
 
 # URL
@@ -68,10 +64,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 plugins: hexo-renderer-less
 ## Themes: https://hexo.io/themes/
-<<<<<<< HEAD
 #theme: material
-=======
->>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 theme: indigo
 
 # Deployment

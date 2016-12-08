@@ -2,15 +2,10 @@
 title: Android平台MarkDown的解析及显示
 date: 2016-08-02 22:01:01
 tags: [Android, View, MarkDown]
-<<<<<<< HEAD
 thumbnail: /images/markdown/thumbnail.jpg
 ---
 很久没有更博了，期间也没怎么闲着。由于现在在实习，弄自己项目的时间就没有以前多了。最近想搞个da新闻，接触到了一点MarkDown的解析以及显示，遂更。
 <!--more-->
-=======
----
-很久没有更博了，期间也没怎么闲着。由于现在在实习，弄自己项目的时间就没有以前多了。最近想搞个da新闻，接触到了一点MarkDown的解析以及显示，遂更。
->>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 
 ### 了解
 
@@ -21,11 +16,8 @@ Android平台上的MarkDown有解析库，比较出名的有：[pegdown](https:/
 Android上解析并显示MarkDown文本最简单的方案就是：将MarkDown文本解析为HTML，再通过WebView显示。GitHub上已经出现了这样的自定义控件，如[zzhoujay/Markdown](https://github.com/falnatsheh/MarkdownView)
 
 说明：GitHub上已经出现了这种自定义控件，本博的目的也仅限于为想自己做MarkDownView的猿们抛砖引玉，顺便分享一下本人踩过的坑。
-<<<<<<< HEAD
 
-=======
-<!--more-->
->>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
+
 ### 开始
 这里我选用了[chjj/marked](https://github.com/chjj/marked)作为解析器，这是一个使用javascript开发的解析库，你懂的。
 * 将marked.js下载后，放在工程Assets文件夹下，修改第1219行
@@ -131,8 +123,5 @@ webview.setWebViewClient(new WebViewClient()
 ### 效果
 不说废话，直接上图
 ![devices](/images/markdown/markdown.png)
-<<<<<<< HEAD
+
 具体的样式，可以自行修改，毕竟它最终会被渲染成一个web。我改了部分样式，包括引用块，超链接等
-=======
-具体的样式，可以自行修改，毕竟它最终会被渲染成一个web。我改了部分样式，包括引用块，超链接等
->>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c

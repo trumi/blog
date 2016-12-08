@@ -2,25 +2,16 @@
 title: Android无线调试
 date: 2015-05-04 20:00:49
 tags: [Android调试 , Android]
-<<<<<<< HEAD
 thumbnail: /images/adbwirelessPictures/thumbnail.jpg
 ---
 厌倦了连接数据线的真机调试吗？或者你的笔记本已经没有多余的usb接口留给调试用了，这该怎么办？下面介绍一种炫酷而又便捷的连接方式，无线调试
 <!--more-->
-=======
----
-厌倦了连接数据线的真机调试吗？或者你的笔记本已经没有多余的usb接口留给调试用了，这该怎么办？下面介绍一种炫酷而又便捷的连接方式，无线调试
->>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 
 ### 准备工作
 * [adbWireless app](http://down11.zol.com.cn/suyan/adbWireless1.5.4.apk)
 * 无线路由器一台
 * root过的手机
 
-<<<<<<< HEAD
-=======
-<!--more-->
->>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 
 ### 开始
 * 首先在手机上记得打开usb调试，相信大家都会。将手机与调试的电脑连入同一无线路由器
