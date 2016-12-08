@@ -64,8 +64,8 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 plugins: hexo-renderer-less
 ## Themes: https://hexo.io/themes/
-theme: material
-#theme: indigo
+#theme: material
+theme: indigo
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

@@ -16,7 +16,7 @@ menu:
     url: /archives
   tags:
     text: 标签
-    url: /tags
+    url: /tags/
   user:
     text: 个人简介
     url: /about.html
@@ -24,7 +24,7 @@ menu:
     url: https://github.com/trumi
     target: _blank
   link:
-    url: /links.html
+    url: /links/
     text: 友链
 
 #rss: /atom.xml
