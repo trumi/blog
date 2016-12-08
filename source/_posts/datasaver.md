@@ -2,6 +2,7 @@
 title: Android全局变量的存储
 date: 2016-05-10 16:55:36
 tags: [Android , SharedPreferences]
+<<<<<<< HEAD
 thumbnail: /images/datasaver/thumbnail.jpg
 ---
 
@@ -10,6 +11,14 @@ thumbnail: /images/datasaver/thumbnail.jpg
 <!--more-->
 好吧，我承认这样有点流氓。先不说这个，由此带来了一个问题：项目的全局变量是用一个静态的JavaBean保存的，在登录时将获取的数据保存，供其他界面使用。当App挂在后台时间过久，或者点开了其他的App，导致App申请的内存被回收，但主Activity并未走入onDestroy()，因此App并未退出，无法从Launcher Activity开始周期，而此时全局变量会由于内存释放而丢失。当重新进入App的主界面时，会重新从onCreate()开始生命周期，如果全局变量丢失，直接报NullPointerException
 
+=======
+---
+
+### 问题描述 
+由于最近把项目的返回逻辑修改了一下，重写了onKeyDown()的KEYCODE_BACK事件，从点返回键直接finishi()，改为常驻，也就是模拟home键。好吧，我承认这样有点流氓。先不说这个，由此带来了一个问题：项目的全局变量是用一个静态的JavaBean保存的，在登录时将获取的数据保存，供其他界面使用。当App挂在后台时间过久，或者点开了其他的App，导致App申请的内存被回收，但主Activity并未走入onDestroy()，因此App并未退出，无法从Launcher Activity开始周期，而此时全局变量会由于内存释放而丢失。当重新进入App的主界面时，会重新从onCreate()开始生命周期，如果全局变量丢失，直接报NullPointerException
+
+<!--more-->
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 
 ### 了解
 Android保存全局变量的方式有几种
@@ -94,7 +103,11 @@ Android数据存储方式的一种，文件将以xml的格式保存在 data/data
 这里只进行了将JsonObject转为String保存在SharedPreferences中的操作
 
 既然出现了SharedPreference.Editor，那就顺便说说SharedPreferences.Editor中commit和apply的区别
+<<<<<<< HEAD
 * apply没有返回值而commit返回boolean表明修改是否提交成功
+=======
+* apply没有返回值而commit返回boolean表明修改是否提交成功 
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 * apply是将修改数据提交到内存, 而后异步真正提交到硬件磁盘, 而commit是同步的提交到硬件磁盘，因此，在多个并发的提交commit的时候，他们会等待正在处理的commit保存到磁盘后在操作，从而降低了效率。而apply只是原子的提交到内容，后面有调用apply的函数的将会直接覆盖前面的内存数据，这样从一定程度上提高了很多效率
 * 由于在一个进程中，SharedPreference是单实例，一般不会出现并发冲突，如果对提交的结果不关心的话，建议使用apply，当然需要确保提交成功且有后续操作的话，还是需要用commit的
 
@@ -149,4 +162,8 @@ private static void mputData(String name, String value) {
     }
 {% endcodeblock %}
 
+<<<<<<< HEAD
 至此，所有步骤结束。采用这种模式的存储后，数据操作方便，也不会再丢失了，兼顾了静态类和SharedPreferences的特点，降低了文件读写次数的同时保证了数据的完整性。本人亲测，自从采用这种方案后，App再也没有出现过由于丢失数据而Crash的情况了
+=======
+至此，所有步骤结束。采用这种模式的存储后，数据操作方便，也不会再丢失了，兼顾了静态类和SharedPreferences的特点，降低了文件读写次数的同时保证了数据的完整性。本人亲测，自从采用这种方案后，App再也没有出现过由于丢失数据而Crash的情况了
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c

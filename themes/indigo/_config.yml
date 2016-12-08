@@ -16,7 +16,11 @@ menu:
     url: /archives
   tags:
     text: 标签
+<<<<<<< HEAD
     url: /tags/
+=======
+    url: /tags
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
   user:
     text: 个人简介
     url: /about.html
@@ -24,7 +28,11 @@ menu:
     url: https://github.com/trumi
     target: _blank
   link:
+<<<<<<< HEAD
     url: /links/
+=======
+    url: /links.html
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
     text: 友链
 
 #rss: /atom.xml
@@ -71,4 +79,8 @@ less:
 
 #是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key
 #若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论
+<<<<<<< HEAD
 duoshuo: trumi
+=======
+duoshuo: trumi
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c

@@ -2,10 +2,15 @@
 title: AlarmManager实现上课静音
 date: 2016-02-08 22:40:08
 tags: [Android, AlarmManager]
+<<<<<<< HEAD
 thumbnail: images/alarmmanager/thumbnail.jpg
 ---
 前段时间，把玩别人家app的时候，发现某课程表类app带有上课静音的功能:上课时自动将手机调至震动或静音状态，课间或放学恢复铃声。这简直就是我们这种上课时不时忘记静音的人的福音啊！于是，我也打算在正在做的一个app上加入该功能。
 <!--more-->
+=======
+---
+前段时间，把玩别人家app的时候，发现某课程表类app带有上课静音的功能:上课时自动将手机调至震动或静音状态，课间或放学恢复铃声。这简直就是我们这种上课时不时忘记静音的人的福音啊！于是，我也打算在正在做的一个app上加入该功能。
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 
 ### 奇怪的解决方案
 
@@ -14,12 +19,17 @@ thumbnail: images/alarmmanager/thumbnail.jpg
 ### 最终的方案
 查资料后，发现有个叫AlarmManager的东西。如果想要深入了解，建议可以看看[深入学习android之AlarmManager](http://jinguo.iteye.com/blog/799778)这篇博文。AlarmManager的作用文档中的解释是：在特定的时刻为我们广播一个指定的Intent。简单的说就是我们设定一个时间，然后在该时间到来时，AlarmManager为我们广播一个我们设定的Intent。看上去符合要求，接下来开始解决问题
 
+<<<<<<< HEAD
 
+=======
+<!--more-->
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 
 ### 了解
 
 ##### android提供了四种类型的AlarmManager：
 
+<<<<<<< HEAD
 * LAPSED_REALTIME
 在指定的延时过后，发送广播，但不唤醒设备。
 
@@ -54,6 +64,42 @@ INTERVAL_DAY
 取消一个设置的闹钟
 
 * void setTimeZone(String timeZone)
+=======
+* LAPSED_REALTIME 
+在指定的延时过后，发送广播，但不唤醒设备。 
+
+* LAPSED_REALTIME_WAKEUP 
+在指定的演示后，发送广播，并唤醒设备 
+延时是要把系统启动的时间SystemClock.elapsedRealtime()算进去的。 
+
+* RTC 
+在指定的时刻，发送广播，但不唤醒设备 
+
+* RTC_WAKEUP 
+在指定的时刻，发送广播，并唤醒设备（本次主要使用这种）
+
+##### AlarmManager提供的方法： 
+* void set(int type, long triggerAtTime, PendingIntent operation) 
+设置一个闹钟 
+
+* void setRepeating(int type, long triggerAtTime, long interval, PendingIntent operation) 
+设置一个会重复的闹钟 
+
+* void setInexactRepeating(int type, long triggerAtTime, long interval, PendingIntent operation) 
+设置一个重复闹钟的不精确版本，它相对而言更节能（power-efficient）一些，因为系统可能会将几个差不多的闹钟合并为一个来执行，减少设备的唤醒次数。 
+内置的几个interval为： 
+INTERVAL_FIFTEEN_MINUTES 
+INTERVAL_HALF_HOUR 
+INTERVAL_HOUR 
+INTERVAL_HALF_DAY 
+INTERVAL_DAY 
+如果你将其设为DAY，那么可能这一天中的所有闹钟都会被合并掉。 
+
+* void cancel(PendingIntent operation) 
+取消一个设置的闹钟 
+
+* void setTimeZone(String timeZone) 
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 设置系统的默认时区。需要android.permission.SET_TIME_ZONE权限
 
 ---
@@ -71,7 +117,11 @@ INTERVAL_DAY
 
 #### 定义两种唤醒方式
 
+<<<<<<< HEAD
 以天为单位进行循环计划任务
+=======
+以天为单位进行循环计划任务 
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 
 {% codeblock lang:java %}
     public void startSheduleEveryday(Intent intent, int requestCode, int hour, int minuts) {
@@ -89,7 +139,11 @@ INTERVAL_DAY
     }
 {% endcodeblock %}
 
+<<<<<<< HEAD
 距离此时后多少秒开始计划任务
+=======
+距离此时后多少秒开始计划任务 
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 
 {% codeblock  lang:java %}
     public void startSheduleDelayTime(Intent intent, int requestCode, int delaySecond) {
@@ -102,8 +156,13 @@ INTERVAL_DAY
     }
     {% endcodeblock %}
 
+<<<<<<< HEAD
 #### 初始化计划任务
 主要是初始化上午，下午，晚上开始上课的计划任务
+=======
+#### 初始化计划任务 
+主要是初始化上午，下午，晚上开始上课的计划任务 
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
 {% codeblock lang:java %}
                         Intent muteIntent = new Intent();
                         muteIntent.setAction(BackGroundScheduleTaskReceiver.ACTION);
@@ -257,4 +316,8 @@ public class BackGroundScheduleTaskReceiver extends BroadcastReceiver {
 
 ### 小结
 
+<<<<<<< HEAD
 虽然这种解决方法可能不是最好的，但也花费了一点心思。AlarmManager用在长时间定时启动方面非常合适，毕竟系统闹钟也是用的AlarmManager，比线程休眠来得更加优雅。
+=======
+虽然这种解决方法可能不是最好的，但也花费了一点心思。AlarmManager用在长时间定时启动方面非常合适，毕竟系统闹钟也是用的AlarmManager，比线程休眠来得更加优雅。
+>>>>>>> 7f71da62acc8d31c1677818e3ea3d9faaba8a63c
