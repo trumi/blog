@@ -15,10 +15,46 @@ thumbnail: images/alarmmanager/thumbnail.jpg
 查资料后，发现有个叫AlarmManager的东西。如果想要深入了解，建议可以看看[深入学习android之AlarmManager](http://jinguo.iteye.com/blog/799778)这篇博文。AlarmManager的作用文档中的解释是：在特定的时刻为我们广播一个指定的Intent。简单的说就是我们设定一个时间，然后在该时间到来时，AlarmManager为我们广播一个我们设定的Intent。看上去符合要求，接下来开始解决问题
 
 
+<!--more-->
 
 ### 了解
 
 ##### android提供了四种类型的AlarmManager：
+
+* LAPSED_REALTIME
+在指定的延时过后，发送广播，但不唤醒设备。
+
+* LAPSED_REALTIME_WAKEUP
+在指定的演示后，发送广播，并唤醒设备
+延时是要把系统启动的时间SystemClock.elapsedRealtime()算进去的。
+
+* RTC
+在指定的时刻，发送广播，但不唤醒设备
+
+* RTC_WAKEUP
+在指定的时刻，发送广播，并唤醒设备（本次主要使用这种）
+
+##### AlarmManager提供的方法：
+* void set(int type, long triggerAtTime, PendingIntent operation)
+设置一个闹钟
+
+* void setRepeating(int type, long triggerAtTime, long interval, PendingIntent operation)
+设置一个会重复的闹钟
+
+* void setInexactRepeating(int type, long triggerAtTime, long interval, PendingIntent operation)
+设置一个重复闹钟的不精确版本，它相对而言更节能（power-efficient）一些，因为系统可能会将几个差不多的闹钟合并为一个来执行，减少设备的唤醒次数。
+内置的几个interval为：
+INTERVAL_FIFTEEN_MINUTES
+INTERVAL_HALF_HOUR
+INTERVAL_HOUR
+INTERVAL_HALF_DAY
+INTERVAL_DAY
+如果你将其设为DAY，那么可能这一天中的所有闹钟都会被合并掉。
+
+* void cancel(PendingIntent operation)
+取消一个设置的闹钟
+
+* void setTimeZone(String timeZone)
 
 * LAPSED_REALTIME
 在指定的延时过后，发送广播，但不唤醒设备。

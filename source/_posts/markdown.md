@@ -17,6 +17,7 @@ Android上解析并显示MarkDown文本最简单的方案就是：将MarkDown文
 
 说明：GitHub上已经出现了这种自定义控件，本博的目的也仅限于为想自己做MarkDownView的猿们抛砖引玉，顺便分享一下本人踩过的坑。
 
+
 ### 开始
 这里我选用了[chjj/marked](https://github.com/chjj/marked)作为解析器，这是一个使用javascript开发的解析库，你懂的。
 * 将marked.js下载后，放在工程Assets文件夹下，修改第1219行
@@ -122,4 +123,5 @@ webview.setWebViewClient(new WebViewClient()
 ### 效果
 不说废话，直接上图
 ![devices](/images/markdown/markdown.png)
+
 具体的样式，可以自行修改，毕竟它最终会被渲染成一个web。我改了部分样式，包括引用块，超链接等
