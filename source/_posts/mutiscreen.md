@@ -2,6 +2,7 @@
 title: Android 7.0 功能体验之多窗口支持
 date: 2016-12-6 16:55:36
 tags: [Android 7.0 , 多窗口]
+thumbnail: /images/mutiscreen/mw-splitscreen.png
 ---
 
 ### 概览
