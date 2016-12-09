@@ -24,14 +24,14 @@ Android N 允许多个应用同时共享屏幕。例如，用户可以分屏显�
 ### 解读
 若要将app调整为可供分屏形式，需要在AndroidManifest.xml中的`<activity>`或 `<application>`节点中添加：
 
-```
+```xml
 android:resizeableActivity=["true" | "false"]
 ```
 如果该属性设置为 true，Activity 将能以分屏和自由形状模式启动。 如果此属性设置为 false，Activity 将不支持多窗口模式。 如果该值为 false，且用户尝试在多窗口模式下启动 Activity，该 Activity 将全屏显示。
 
 如果应用targetSdkVersion为 Android N，如果但未对该属性指定值，则该属性的值默认设为 true。
 若要设置为可画中画模式，则在AndroidManifest.xml中的`<activity>`或 `<application>`节点中添加：
-```
+```xml
 android:supportsPictureInPicture=["true" | "false"]
 ```
 目前画中画模式还只是　Andorid TV　可用
@@ -56,11 +56,11 @@ android:supportsPictureInPicture=["true" | "false"]
 如果不处于分屏模式下，就只是在新的任务栈中启动一个新的Activity，不会变成分屏模式
 
 第四个，在AndroidManifest清单文件下的对应`<activity>`节点中添加了
-```
+```xml
 android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
 ```
 这样的话，在Activity中重写
-```
+```java
 onConfigurationChanged(Configuration newConfig)
 ```
 可以获取到Activity窗口变化的大小等数据
@@ -78,7 +78,7 @@ android:minHeight　　　 　配置分屏和自由形状模式下最小的高�
 android:minWidth 　　　 　配置分屏和自由形状模式下最小的宽度
 ```
 如
-```
+```xml
 <activity android:name=".MyActivity">
     <layout android:defaultHeight="500dp"
           android:defaultWidth="600dp"
@@ -94,7 +94,7 @@ android:minWidth 　　　 　配置分屏和自由形状模式下最小的宽�
 >较大设备的制造商可选择启用自由形状模式，在该模式中，用户可以自由调整各 Activity 的尺寸。
 
 我下载的原生7.0镜像中并没有开启自由模式的地方，只有分屏，这让我一度怀疑人参＝＝，幸好还有万能的google哈哈哈，只要输入
-```
+```shell
 adb shell settings put global enable_freeform_support 1
 adb reboot
 ```
@@ -104,7 +104,7 @@ adb reboot
 ![freeform](/images/mutiscreen/freeform.png)
 
 第六个，在启动Activity的Intent中加了个Rect，
-```
+```java
     Rect bounds = new Rect(500, 300, 100, 0);
     ActivityOptions options = ActivityOptions.makeBasic();
     options.setLaunchBounds(bounds);

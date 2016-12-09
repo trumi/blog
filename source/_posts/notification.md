@@ -34,7 +34,7 @@ tags: [Android 7.0 , 通知中心]
 ![open](/images/notification/Screenshot_1481007494.png)
 
 这其中包含了两个部分，一个是最顶上的`There are %s ActivieNotifications`那一行，暂且称作为summary Notification，另一个就是下面的消息主体。这两个Notification是通过一个Groupkey的字符串相关联的
-```
+```java
 //定义关联组字符
 private static final String NOTIFICATION_GROUP = "com.example.android.activenotifications.notification_type";
 
@@ -85,7 +85,7 @@ private void addNotificationAndUpdateSummaries() {
 
 要想使用MessagingStyle非常简单，首先创建一个MessagingStyle对象，然后在`NotificationCompat.Builder`中有个方法叫`setStyle()`(上文的代码中出现过)，直接`setstyle(style)`就行。MessagingStyle是一个强大的通知模板，下面来看看它的大致使用方法。
 
-```
+```java
 NotificationCompat.MessagingStyle style = new NotificationCompat.MessagingStyle("我");
     style.setConversationTitle("Team lunch")
     style.addMessage("Hi", 100, null)
@@ -98,19 +98,19 @@ NotificationCompat.Builder builder.setStyle(style);
 ![MessagingStyle](/images/notification/Screenshot_1481016793.png)
 
 先看这一句
-```
+```java
 NotificationCompat.MessagingStyle style = new NotificationCompat.MessagingStyle("我");
 ```
 向MessagingStyle的构造方法传递了一个String类型的参数，它的意义是指定使用者(也就是自己)出现在对话中的称谓
 
 再看这句
-```
+```java
 style.setConversationTitle("Team lunch")
 ```
 这行代码设置了对话的标题
 
 最后就是这若干的addMessage了
-```
+```java
 style.addMessage("Hi", 100, null)
 style.addMessage("What's up?", 200, "Coworker")
 ```
@@ -129,7 +129,7 @@ addMessage共有3个参数，`addMessage(CharSequence text, long timestamp, Char
 ![directreply](/images/notification/Screenshot_1481094801.png)
 
 直接回复，是靠Android7.0引入的`RemoteInput`来实现的
-```
+```java
 RemoteInput remoteInput = new RemoteInput.Builder(KEY_TEXT_REPLY)
                 .setLabel("回复此消息")
                 .build();
@@ -139,7 +139,7 @@ RemoteInput remoteInput = new RemoteInput.Builder(KEY_TEXT_REPLY)
 至于这个KEY_TEXT_REPLY，是个可自定义字符串，相当于ID，在提取RemoteInput输入的文本时会用到
 
 构建好了`RemoteInput`对象，就要靠`NotificationCompat.Action`来绑定到Notification中
-```
+```java
 NotificationCompat.Action action = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_send, "回复此消息", pendingIntent)
                     .addRemoteInput(remoteInput)
                     .setAllowGeneratedReplies(true)
@@ -149,14 +149,14 @@ NotificationCompat.Action action = new NotificationCompat.Action.Builder(android
 
 
 接下来
-```
+```java
 NotificationCompat.Builder builder.addAction(action);
 ```
 这样，Notification的最下方就会出现一个输入框了，这个输入框还自带发送按钮。
 
 那么，如何接收输入的文字呢？
 在Intent的目标class中
-```
+```java
 Intent intent=getIntent();  //获取传递的Intent
 Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
 String text=(String) remoteInput.getCharSequence(KEY_TEXT_REPLY);  //这个KEY_TEXT_REPLY与构造时的对应
