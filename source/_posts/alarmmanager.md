@@ -109,7 +109,7 @@ INTERVAL_DAY
 
 以天为单位进行循环计划任务
 
-{% codeblock lang:java %}
+```java
     public void startSheduleEveryday(Intent intent, int requestCode, int hour, int minuts) {
         Calendar calendar = Calendar.getInstance();
 
@@ -123,11 +123,11 @@ INTERVAL_DAY
         am.setRepeating(AlarmManager.RTC_WAKEUP,
                 calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, sender);
     }
-{% endcodeblock %}
+```
 
 距离此时后多少秒开始计划任务
 
-{% codeblock  lang:java %}
+```java
     public void startSheduleDelayTime(Intent intent, int requestCode, int delaySecond) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
@@ -136,11 +136,11 @@ INTERVAL_DAY
         AlarmManager am = (AlarmManager) mcontext.getSystemService(Context.ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
     }
-    {% endcodeblock %}
+```
 
 #### 初始化计划任务
 主要是初始化上午，下午，晚上开始上课的计划任务
-{% codeblock lang:java %}
+```java
                         Intent muteIntent = new Intent();
                         muteIntent.setAction(BackGroundScheduleTaskReceiver.ACTION);
                            //上午
@@ -173,12 +173,12 @@ INTERVAL_DAY
                             muteIntent.putExtra("minute",0);
                             startSheduleEveryday(muteIntent, 103, 19, 0);
                         }
-{% endcodeblock %}
+```
 
 #### 定义BroadcastReceiver接收
 由于AlarmManager通过发送广播传送Intent，所以要定义一个BroadcastReceiver接收Intent
 
-{% codeblock lang:java %}
+```java
 public class BackGroundScheduleTaskReceiver extends BroadcastReceiver {
 
     public static final String ACTION = "scheduleTask";
@@ -285,7 +285,7 @@ public class BackGroundScheduleTaskReceiver extends BroadcastReceiver {
         }
     }
 }
-{% endcodeblock %}
+```
 
 至此，上课静音功能已实现
 

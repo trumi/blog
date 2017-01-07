@@ -30,7 +30,7 @@ Android数据存储方式的一种，文件将以xml的格式保存在 data/data
 
 在写onCreate方法的时候就遇到了一个问题，String类型的丢失很好判断，直接看是否为null就行，而int，特别是boolean，不太好处理，因为这两个类型数据一旦丢失，int取值时将是默认值0，而boolean将是默认值false，所以我用了一个JsonObject作为缓冲。
 
-{% codeblock lang:java %}
+```java
     public static void onCreate() {
         if (sharedPreferences == null) {
         //获取SharedPreferences
@@ -53,13 +53,13 @@ Android数据存储方式的一种，文件将以xml的格式保存在 data/data
             */
         }
     }
-{% endcodeblock %}
+```
 
 这里可能会有疑问，为什么是通过判断Json长度来确定数据是否有丢失，而不是直接判断Json长度为0或者Json为null。
 经过几次调试，发现一个问题，Json中的数据可能不会全部丢失，而是丢失一部分，比如下面这段Json
 
 丢失前
-{% codeblock lang:json %}
+```json
 {
     "develop_version": true,
     "token": "token=mqsittvzqr6fw4ahh62q5j62rccrwak4",
@@ -74,23 +74,23 @@ Android数据存储方式的一种，文件将以xml的格式保存在 data/data
     "term": "2015-2016-2",
     "HAVE_NEW_VERSION": false
 }
-{% endcodeblock %}
+```
 丢失后
-{% codeblock lang:json %}
+```json
 {
     "token": "token=mqsittvzqr6fw4ahh62q5j62rccrwak4"
 }
-{% endcodeblock %}
+```
 只留下了token！！！
 经过分析，原因是App的Service一直在跑，token也一直被Service所持有，所以没有丢失，而其他的字段由于持有它们的类被释放了，所以它们也跟着被释放
 
 接下来是onStop方法
-{% codeblock lang:java %}
+```java
     public static void onStop() {
         editor.putString("data", jsonObject.toString());
         editor.apply();
     }
-{% endcodeblock %}
+```
 这里只进行了将JsonObject转为String保存在SharedPreferences中的操作
 
 既然出现了SharedPreference.Editor，那就顺便说说SharedPreferences.Editor中commit和apply的区别
@@ -100,8 +100,7 @@ Android数据存储方式的一种，文件将以xml的格式保存在 data/data
 
 剩下的，就只剩下构建JavaBean了
 
-{% codeblock lang:java %}
-
+```java
     public static void setToken(String token) {
         Token = token;
         mputData(TOKEN, token);
@@ -115,10 +114,10 @@ Android数据存储方式的一种，文件将以xml的格式保存在 data/data
     .
     .
     .
-{% endcodeblock %}
+```
 
 mputData方法
-{% codeblock lang:java %}
+```java
 private static void mputData(String name, String value) {
         try {
             jsonObject.put(name, value);
@@ -126,27 +125,27 @@ private static void mputData(String name, String value) {
             e.printStackTrace();
         }
     }
-{% endcodeblock %}
+```
 这个方法进行操作的就是将参数保存在Json中，方便写入SharedPreferences
 
 整个数据保存类就构建完了，接下来就是调用了
 
 由于采用静态类，所以只需要在Launcher实例化一次就行，接下来在LoginActivity'完成所有数据的初始化，进入MainActivity后，在onCreate方法中添加
 
-{% codeblock lang:java %}
+```java
  @Override
     protected void onCreate(Bundle savedInstanceState) {
           DataSaver.onCreate();   //DataSaver是数据保存类的类名
 }
-{% endcodeblock %}
+```
 
 重写onStop()，添加
-{% codeblock lang:java %}
+```java
     @Override
     protected void onStop() {
         super.onStop();
         DataSaver.onStop();
     }
-{% endcodeblock %}
+```
 
 至此，所有步骤结束。采用这种模式的存储后，数据操作方便，也不会再丢失了，兼顾了静态类和SharedPreferences的特点，降低了文件读写次数的同时保证了数据的完整性。本人亲测，自从采用这种方案后，App再也没有出现过由于丢失数据而Crash的情况了

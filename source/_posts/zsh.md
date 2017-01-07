@@ -16,9 +16,9 @@ thumbnail: /images/zsh/thumbnail.png
 
 ### 安装
 
-{% codeblock lang:shell %}
+```shell
 sudo apt-get install zsh
-{% endcodeblock %}
+```
 
 ### 配置
 
@@ -27,14 +27,14 @@ sudo apt-get install zsh
 1 . 先[下载](https://codeload.github.com/trumi/zshrc/zip/master)我的配置文件，打开压缩包
 2 . 将.zshrc文件复制到home目录下
 3 .  将zsh作为系统默认的shell
-{% codeblock lang:shell %}
+```shell
 # 为root用户修改默认shell为zsh
 chsh -s /bin/zsh root
 # 为当前用户修改默认shell为zsh
 chsh -s /bin/zsh
 # 恢复命令
 chsh -s /bin/bash
-{% endcodeblock %}
+```
 4 . 打开Shell，进入新的世界吧
 5 . 如果觉得配色不太喜欢，可自行更改配置文件，注释较全
 
