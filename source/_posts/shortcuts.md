@@ -2,7 +2,7 @@
 title: Android 7.1功能体验之Shortcuts
 date: 2016-12-20 10:04:18
 tags: [Android 7.1, Shortcuts]
-thumbnail: /images/shortcuts/thumbnail.png
+thumbnail: /images/shortcuts/shortcuts.png
 ---
 ## 简介
 

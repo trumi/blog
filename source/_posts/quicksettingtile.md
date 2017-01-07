@@ -2,7 +2,6 @@
 title: Android 7.0 功能体验之Quick Setting Tile
 date: 2016-12-09 15:21:52
 tags: [Android 7.0 , Quick Setting Tile]
-thumbnail: /images/quicksettingtile/quicksettings.png
 ---
 >“快速设置”通常用于直接从通知栏显示关键设置和操作，非常简单。在 Android 7.0 中，我们已扩展“快速设置”的范围，使其更加有用更方便。
 对于开发者，Android 7.0 还添加了一个新的 API，从而让您可以定义自己的“快速设置”图块，使用户可以轻松访问您应用中的关键控件和操作。

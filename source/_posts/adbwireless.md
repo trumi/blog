@@ -17,16 +17,16 @@ thumbnail: /images/adbwirelessPictures/thumbnail.jpg
 * 首先在手机上记得打开usb调试，相信大家都会。将手机与调试的电脑连入同一无线路由器
 * 安装好 adbWireless后，保证授予其root权限，否则无法使用。完成授权后，打开app，点击正中间的按钮，按钮变绿后，可以在按钮下方看到手机的ip地址
 * 操作调试的电脑，Windows系统用户用cmd命令行进入adb工具的目录，一般为sdk目录/platform-tools，Linux用户直接打开终端。输入
-```
+```shell
 adb connect [手机的IP地址]
 ```
 
 ![connect](/images/adbwirelessPictures/connect.png)
 
 * 输入命令
-{% codeblock %}
+```shell
 adb devices
-{% endcodeblock %}
+```
 
 ![devices](/images/adbwirelessPictures/devices.png)
 

@@ -44,7 +44,7 @@ thumbnail: /images/schedule/gezi.png
 注意：由于GridLayout是在API 14后引入的，若要向下兼容，请使用v7包下的GridLayout！
 
 
-{% codeblock lang:xml %}
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -213,10 +213,10 @@ thumbnail: /images/schedule/gezi.png
                 app:layout_row="0" />
         </android.support.v7.widget.GridLayout>
 </android.support.v4.widget.NestedScrollView>
-{% endcodeblock %}
+```
 
 接下来，逻辑代码
-{% codeblock lang:java %}
+```java
   private GridLayout gridLayout;
 
 /**
@@ -291,10 +291,11 @@ thumbnail: /images/schedule/gezi.png
             }
         }
     }
-{% endcodeblock %}
+```
 
 至此，“乞丐版”超级课程表已完成，效果图：
 ![shuibiao](/images/schedule/shuibiao.png)
 
 ### 总结
-看上去貌似很难做的样子，其实只要思路对了，做起来就不难了。本人美术功底有限，界面还有很多提升的空间，继续加油，哈哈
+看上去貌似很难做的样子，其实只要思路对了，做起来就不难了。
+PS：挖个坑，本人正在尝试开源课表控件，争取让大家都用上

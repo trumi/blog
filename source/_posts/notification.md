@@ -2,7 +2,6 @@
 title: Android 7.0 功能体验之通知中心
 date: 2016-12-7 16:55:36
 tags: [Android 7.0 , 通知中心]
-thumbnail: /images/notification/thumbnail.png
 ---
 
 在Android 7.0 中，我们重新设计了通知，使其更易于使用并且速度更快。部分变更包括：
