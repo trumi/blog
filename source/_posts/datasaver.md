@@ -20,7 +20,7 @@ Android保存全局变量的方式有几种
 * SharedPreferences
 Android数据存储方式的一种，文件将以xml的格式保存在 data/data/包名/shared_prefs 目录下。使用这种方式存储全局变量虽然数据不会丢失，也不存在内存泄露的问题，但涉及文件读写，使用也不及静态类来得方便
 
-### 思路
+### 思路（旧）
 
 既然Sharedpreferences使用不如静态类来得方便，静态类的数据保存的又没有SharedPreferences来得持久，于是采用SharedPreferences+静态类的解决方案：在一个静态类中定义两个方法，onCreate()和onStop()，从名字上大概可以猜出，这两个方法是要在Activity的相应生命周期中执行的。onCreate方法中执行对静态数据完整度的检查，如果发现数据为null，则从SharedPreferences中拿数据。onStop()方法中执行全局变量写入至SharedPreferences操作。两个方法分别在主Activity的onCreate()和onStop()中调用
 
@@ -147,5 +147,10 @@ private static void mputData(String name, String value) {
         DataSaver.onStop();
     }
 ```
+### 更好的办法
+上面说的这种方案看似可行，不过确实过于累赘，没有实用价值
 
-至此，所有步骤结束。采用这种模式的存储后，数据操作方便，也不会再丢失了，兼顾了静态类和SharedPreferences的特点，降低了文件读写次数的同时保证了数据的完整性。本人亲测，自从采用这种方案后，App再也没有出现过由于丢失数据而Crash的情况了
+其实，数据恢复可以放在Application类的生命周期里进行，这样更加合理（感谢评论提醒）。然后，不用存什么json了，直接利用SharedPreferences，KEY为参数名，自己定义好，VALUE就是你的变量值，存入SharedPreferences，存入和恢复的时机和Activity一样。
+
+### 写在最后
+一年后，我想起了这篇时隔一年的博文，看到里面那惨不忍睹的思路和代码，有种想删掉它的冲动，最后还是忍住了。如果你也有这种感觉，恭喜，成长万岁。
