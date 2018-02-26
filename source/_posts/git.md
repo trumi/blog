@@ -48,7 +48,7 @@ index和工作目录中的内容不作任何改变，仅仅把`HEAD`指向`<comm
 自从`<commit>`以来在工作目录中的任何改变都被丢弃，并把`HEAD`指向`<commit>`
 * `git reset --mixed <commit>`
 工作区中文件的修改都会被保留，不会丢弃，但是也不会被标记成"Changes to be committed"，但是会打出什么还未被更新的报告。
-* `git reset --hard HEAD^`
+* `git reset --hard HEAD`
 回滚上一次的提交
 
 ### stash
